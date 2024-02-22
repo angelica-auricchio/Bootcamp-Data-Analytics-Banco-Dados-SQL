@@ -90,18 +90,8 @@ dados = cursor.execute('SELECT nome, idade FROM clientes WHERE idade > 30;')
 exibe_resultado_consulta('Exercício 6.a', dados)
 
 # b) Calcule o saldo médio dos clientes.
-dados = cursor.execute('Select count(id) from clientes;')
-quantidade_clientes = [line[0] for line in dados][0]
-
-dados = cursor.execute('Select SUM(saldo) from clientes')
-soma_saldo_clientes = [line[0] for line in dados][0]
-
-def calcula_media(quantidade, soma_valores):
-    media = (soma_valores/quantidade)
-    return media
-
-saldo_medio_cliente = calcula_media(quantidade_clientes, soma_saldo_clientes)
-print(f'Exercício 6.b - O saldo médio do cliente é de:{saldo_medio_cliente}')
+dados = cursor.execute('Select AVG(saldo) from clientes;')
+exibe_resultado_consulta('Exercício 6.b', dados)
 
 # c) Encontre o cliente com o saldo máximo.
 dados = cursor.execute('select max(saldo) FROM clientes;')
